@@ -11,5 +11,10 @@ return {
   "neovim/nvim-lspconfig",
   "williamboman/mason-lspconfig.nvim",
   "williamboman/mason.nvim",
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  }
 }
 
