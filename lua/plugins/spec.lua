@@ -9,6 +9,8 @@ return {
   },
   "nvim-treesitter/nvim-treesitter",
   "neovim/nvim-lspconfig",
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-nvim-lsp",
   "williamboman/mason-lspconfig.nvim",
   "williamboman/mason.nvim",
   {
