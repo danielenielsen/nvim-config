@@ -1,7 +1,7 @@
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "rust_analyzer", "zls", "csharp_ls", "glslls" }
+  ensure_installed = { "lua_ls", "rust_analyzer", "zls", "csharp_ls", "glslls", "pylsp" }
 })
 
 local on_attach = function(_, _)
@@ -35,6 +35,11 @@ require("lspconfig").csharp_ls.setup {
 }
 
 require("lspconfig").glslls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+require("lspconfig").pylsp.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
