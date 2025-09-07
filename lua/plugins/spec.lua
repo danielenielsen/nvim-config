@@ -20,13 +20,15 @@ return {
     end
   },
 
-  
+  -- LSP
   "nvim-treesitter/nvim-treesitter",
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig",
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-nvim-lsp",
-  "williamboman/mason-lspconfig.nvim",
-  "williamboman/mason.nvim",
+
+  -- File navigation
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
