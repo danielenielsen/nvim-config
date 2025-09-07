@@ -1,7 +1,9 @@
 
+local servers = { "lua_ls", "rust_analyzer", "zls", "csharp_ls", "pylsp", "ts_ls" }
+
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "rust_analyzer", "zls", "csharp_ls", "pylsp" }
+  ensure_installed = servers
 })
 
 local on_attach = function(_, _)
@@ -14,30 +16,12 @@ end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-require("lspconfig").lua_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
-require("lspconfig").rust_analyzer.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
-require("lspconfig").zls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
-require("lspconfig").csharp_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
-require("lspconfig").pylsp.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
+for _, lsp in ipairs(servers) do
+  require("lspconfig")[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end
 
 local cmp = require("cmp")
 cmp.setup({
@@ -54,3 +38,8 @@ cmp.setup({
     { name = "buffer" }
   })
 })
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = { "javascript", "typescript", "tsx" },
+  highlight = { enable = true },
+}
